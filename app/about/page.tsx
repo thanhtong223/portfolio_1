@@ -57,7 +57,7 @@ export default function AboutPage() {
         </a>
         <a
           className="button button-secondary"
-          href="mailto:thanhtong.van@outlook.com"
+          href="mailto:thanhtv021203.forwork@gmail.com"
         >
           <Mail size={18} aria-hidden="true" />
           Email
