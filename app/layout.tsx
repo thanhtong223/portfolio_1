@@ -56,6 +56,62 @@ export default function RootLayout({
           })();
         `}
       </Script>
+      <Script id="typeform-utm-query-bridge" strategy="beforeInteractive">
+        {`
+          (function () {
+            const trackedParams = [
+              "utm_source",
+              "utm_medium",
+              "utm_campaign",
+              "utm_content",
+              "utm_term"
+            ];
+
+            const prefix = "tf_attr_";
+            const url = new URL(window.location.href);
+            const params = url.searchParams;
+
+            trackedParams.forEach(function (key) {
+              const firstValue = localStorage.getItem(prefix + "first_" + key);
+              const latestValue = localStorage.getItem(prefix + "latest_" + key);
+
+              // Standard UTM fields Typeform can read
+              if (latestValue && !params.get(key)) {
+                params.set(key, latestValue);
+              }
+
+              // Extra first-touch fields
+              if (firstValue) {
+                params.set("first_" + key, firstValue);
+              }
+
+              // Extra latest-touch fields
+              if (latestValue) {
+                params.set("latest_" + key, latestValue);
+              }
+            });
+
+            const firstLandingPage = localStorage.getItem(prefix + "first_landing_page");
+            const firstReferrer = localStorage.getItem(prefix + "first_referrer");
+
+            if (firstLandingPage) {
+              params.set("first_landing_page", firstLandingPage);
+            }
+
+            if (firstReferrer) {
+              params.set("first_referrer", firstReferrer);
+            }
+
+            const newUrl =
+              url.pathname +
+              "?" +
+              params.toString() +
+              url.hash;
+
+            window.history.replaceState(null, "", newUrl);
+          })();
+        `}
+      </Script>
       <body>
         <a className="skip-link" href="#main-content">
           Skip to main content
