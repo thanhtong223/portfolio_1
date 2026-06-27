@@ -1545,6 +1545,12 @@ main:has(.about-page) {
   background: transparent;
   color: oklch(0.94 0.008 95);
 }
+.about-page .button-compact {
+  min-height: 36px;
+  gap: 0.4rem;
+  padding: 0.48rem 0.7rem;
+  font-size: 0.78rem;
+}
 
 .page-hero {
   padding-top: clamp(4rem, 10vw, 7rem);
@@ -2652,6 +2658,10 @@ main:has(.about-page) {
 
   .about-page .contact-links {
     margin-top: 1.25rem;
+  }
+  .about-page .button-compact {
+    width: fit-content;
+    justify-self: start;
   }
 }
 

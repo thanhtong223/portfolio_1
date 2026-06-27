@@ -1,4 +1,4 @@
-import { Mail, SquareArrowOutUpRight } from "lucide-react";
+import { FlaskConical, Mail, SquareArrowOutUpRight } from "lucide-react";
 
 export const metadata = {
   title: "About Me | Tong Van Thanh",
@@ -61,6 +61,10 @@ export default function AboutPage() {
         >
           <Mail size={18} aria-hidden="true" />
           Email
+        </a>
+        <a className="button button-secondary button-compact" href="/utm/">
+          <FlaskConical size={16} aria-hidden="true" />
+          Typeform test
         </a>
       </div>
     </section>
